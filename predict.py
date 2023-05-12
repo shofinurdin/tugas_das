@@ -6,9 +6,9 @@ import pandas as pd
 import numpy as np
 
 
-def load_model():
-	model_gb=load('model.joblib')
-	return model_gb
+# def load_model():
+# 	model_gb=load('model.joblib')
+# 	return model_gb
 
 def run_predict_app():
     
@@ -31,7 +31,7 @@ def run_predict_app():
         st.write('Input :')
         data_input=pd.DataFrame(data=input_variables, columns=['Sepal Length','Sepal Width','Petal Length','Petal Width'])
         st.dataframe(data_input)
-        model = load_model()
+        model = load('model.joblib')
         prediction = model.predict(input_variables)
         st.write('Prediction :')
         st.success(prediction[0])
