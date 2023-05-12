@@ -15,8 +15,8 @@ def run_predict_app():
     st.subheader("Classification Prediction")
     
 
-    #modelfile = open("model.pkl", "rb")
-    model = load_model()
+    
+    
 
     st.sidebar.title("Features")
     #Intializing
@@ -31,6 +31,7 @@ def run_predict_app():
         st.write('Input :')
         data_input=pd.DataFrame(data=input_variables, columns=['Sepal Length','Sepal Width','Petal Length','Petal Width'])
         st.dataframe(data_input)
+        model = load_model()
         prediction = model.predict(input_variables)
         st.write('Prediction :')
         st.success(prediction[0])
