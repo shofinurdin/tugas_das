@@ -1,7 +1,7 @@
 
 import streamlit as st
 from PIL import Image
-from joblib import load
+import joblib
 import pandas as pd
 import numpy as np
 
@@ -15,6 +15,8 @@ def run_predict_app():
     st.subheader("Classification Prediction")
     
     model_upload = st.file_uploader('Upload Dataset ', type=['joblib'])
+    #modelfile = open("model.pkl", "rb")
+    
     
     st.sidebar.title("Features")
     #Intializing
@@ -30,7 +32,8 @@ def run_predict_app():
             st.write('Input :')
             data_input=pd.DataFrame(data=input_variables, columns=['Sepal Length','Sepal Width','Petal Length','Petal Width'])
             st.dataframe(data_input)
-            model = load(model_upload)
+            model = joblib.load(model_upload)
+            #model = joblib.load(modelfile)
             prediction = model.predict(input_variables)
             st.write('Prediction :')
             st.success(prediction[0])
