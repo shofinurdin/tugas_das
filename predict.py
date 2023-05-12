@@ -6,13 +6,17 @@ import pandas as pd
 import numpy as np
 
 
+def load_model():
+	model_gb=load('model.joblib')
+	return model_gb
+
 def run_predict_app():
     
     st.subheader("Classification Prediction")
     
 
     #modelfile = open("model.pkl", "rb")
-    model = load('model.joblib')
+    model = load_model()
 
     st.sidebar.title("Features")
     #Intializing
