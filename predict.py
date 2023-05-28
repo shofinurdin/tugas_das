@@ -22,7 +22,7 @@ def run_predict_app():
     pl = st.sidebar.slider(label="Petal Length (cm)",value=4.2,min_value=0.0, max_value=8.0, step=0.1)
     pw = st.sidebar.slider(label="Petal Width (cm)",value=1.2,min_value=0.0, max_value=8.0, step=0.1)
 
-    # if model_file is not None:
+    
     if st.button("Click Here to Classify"):
         dfvalues = pd.DataFrame(list(zip([sl],[sw],[pl],[pw])),columns =['sepal_length', 'sepal_width', 'petal_length', 'petal_width'])
         input_variables = np.array(dfvalues[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']])
@@ -47,5 +47,4 @@ def run_predict_app():
             pred_probability_score=pred_prob[0][2]*100
             st.warning("There is a : {:.2f} % iris-virginica".format(pred_probability_score))
             st.image('virginica.png')
-    # else:
-    #     st.write('model belum diupload')
+    
